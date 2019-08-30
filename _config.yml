@@ -1,0 +1,20 @@
+title:              v1otusc
+tagline:            on GitHub Pages
+description:        Content-focused template for a blog hosted on GitHub Pages.
+url:                http://v1otusc.github.io
+
+author:
+  name:             v1otusc
+  url:              https://weibo.com/v1otusc
+  email:            416566894@qq.com
+
+# GitHub Pages / Jekyll configuration
+baseurl:            ''
+permalink:          /:title/
+paginate:           5
+defaults:
+  -
+    scope:
+      path:         ''
+    values:
+      layout:       post
