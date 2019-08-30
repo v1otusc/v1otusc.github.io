@@ -3,5 +3,5 @@ layout: page
 title: About
 ---
 
-v1otusc
+blog of v1otusc
 
