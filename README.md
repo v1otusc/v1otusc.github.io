@@ -1,4 +1,5 @@
-License
--------
+# v1otusc
+https://v1otusc.github.io/
 
-Open sourced under the [MIT license](<LICENSE.md>).
+## License
+The content of the site is distributed under [MIT license](LICENSE).

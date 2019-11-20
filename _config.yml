@@ -1,20 +1,22 @@
-title:              v1otusc
-tagline:            my_very_personal_blog
-description:        v1otusc.github.io
-url:                https://v1otusc.github.io
+# Permalinks
+#
+# Use of `relative_permalinks` ensures post links from the index work properly.
+permalink:           pretty
+excerpt_separator: <!--more-->
 
+# Setup
+title:               v1otusc
+tagline:             '瞬间的快感不够用'
+description:         'List::'
+url:                 'https://v1otusc.github.io'
+baseurl:             'https://v1otusc.github.io'
+paginate:            5
+
+# About/contact
 author:
-  name:             v1otusc
-  url:              https://weibo.com/v1otusc
-  email:            416566894@qq.com
+  name:              v1otusc
+  url:               https://github.com/v1otusc/
+  email:             v1otusc
 
-# GitHub Pages / Jekyll configuration
-baseurl:            ''
-permalink:          /:title/
-paginate:           5
-defaults:
-  -
-    scope:
-      path:         ''
-    values:
-      layout:       post
+# Custom vars
+version:             1.0.0
