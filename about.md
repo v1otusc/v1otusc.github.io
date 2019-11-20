@@ -1,9 +1,9 @@
 ---
 layout: page
-title: 关于
+title: About Me
 ---
 
-SEU仪器科学与工程学院，研一
+SEU仪器科学与工程学院，2019级
 
 QQ: 416566894
 
