@@ -12,7 +12,9 @@ title: Home
       </a>
     </h1>
     <span class="post-date">{{ post.date | date_to_string }}</span>
-      {{ post.title }}
+      {{ post.excerpt }}
+      <a style="font-style:italic;" href="{{ site.baseurl }}{{ post.url }}">
+        Read more
       <hr>
   </div>
   {% endfor %}
