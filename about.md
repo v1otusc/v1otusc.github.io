@@ -3,7 +3,9 @@ layout: page
 title: About Me
 ---
 
-SEU仪器科学与工程学院，2019级
+SEU ISE
 
-QQ: 416566894
+### contact
+
+v1otusc@yeah.net || 416566894(qq)
 
