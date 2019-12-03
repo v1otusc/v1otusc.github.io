@@ -3,7 +3,7 @@ layout: page
 title: About Me
 ---
 
-SEU研一在读
+`SEU` 研一在读
 
 <hr>
 
