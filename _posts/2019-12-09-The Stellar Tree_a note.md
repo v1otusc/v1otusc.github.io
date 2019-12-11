@@ -84,7 +84,7 @@ we impose the following additional property:
 below is an example of mapping function Φ<sub>VERT</sub>:
 
 <center>
-<img src = "https://raw.githubusercontent.com/v1otusc/PicBed/master/vert_mapping_function.png" width = 70% height = 70%>
+<img src = "https://raw.githubusercontent.com/v1otusc/PicBed/master/vert_mapping_function.png" width = "70%">
 </center>
 
 Formally, Φ<sub>TOP</sub> is a function from the regions of ∆ to the powerset of Σ<sub>T</sub>:
@@ -98,7 +98,7 @@ Formally, Φ<sub>TOP</sub> is a function from the regions of ∆ to the powerset
 below is an example of mapping function Φ<sub>TOP</sub>, for two regions (blue rectangles) of the decomposition of Figure 1(b) on a triangle mesh defined over its vertices. 
 
 <center>
-<img src = "https://raw.githubusercontent.com/v1otusc/PicBed/master/topcells_mapping_function.png" width = 90% height = 90%>
+<img src = "https://raw.githubusercontent.com/v1otusc/PicBed/master/topcells_mapping_function.png" width = "90%">
 </center>
 
 **Definition: spanning number**
