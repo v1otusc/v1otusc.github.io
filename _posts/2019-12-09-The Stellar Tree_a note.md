@@ -84,7 +84,7 @@ we impose the following additional property:
 below is an example of mapping function Φ<sub>VERT</sub>:
 
 <center>
-<img src = "https://raw.githubusercontent.com/v1otusc/PicBed/master/vert_mapping_function.png" width = "70%">
+<img src = "https://raw.githubusercontent.com/v1otusc/PicBed/master/vert_mapping_function.png" width = "60%">
 </center>
 
 Formally, Φ<sub>TOP</sub> is a function from the regions of ∆ to the powerset of Σ<sub>T</sub>:
@@ -123,15 +123,29 @@ The average spanning number χ of a Stellar decomposition **S<sub>D</sub>** is t
 
 ## 1.2 Encoding
 
-A detailed description of a Stellar decomposition of data structures for representing a CP complex and a compressed encoding for the regions of the decomposition.
+A detailed description of a Stellar decomposition of data structures for representing a CP complex and a compressed encoding **for the regions of the decomposition**.
 
 ### 1.2.1 Indexed representation of the CP complex
 
 Assume that the underlying CP complex is representedas an indexed complex, which encodes the spatial position of the vertices and the boundary relation R<sub>k,0</sub> of each top k-simplex in Σ.
 
+We use an array-based representation for the verticesand top cells of Σ. The Σ<sub>V</sub> array encodes the position of each vertex v in Σ, requiring a total of n·|Σ<sub>V</sub>| coordinates. 
 
+Then consider the boundary relation, 
+
+**Thus**, the total storage cost of the indexed mesh representation is:
+
+<center>
+n·|Σ<sub>V</sub>| + ∑<sub>k=1 -> d</sub>∑<sub>σ ∈ Σ<sub>T<sub>k</sub></sub></sub> |R<sub>k,0</sub>(σ)|
+</center>
+
+Note that, in typical cases, where Σ is pure (i.e., its top CP cells all have the same dimension d), Σ requires only two arrays: one for the vertices and one for the top cells.
 
 ### 1.2.2 A compressed region representation
+
+**Consider two encoding strategies** for the data mapped to each region of the decomposition.
+
+**First** is a simple strategy that explicitly encodes the arrays of vertices and top CP cells mapped to each region and work our way to a compressed representation of these lists. 
 
 
 
