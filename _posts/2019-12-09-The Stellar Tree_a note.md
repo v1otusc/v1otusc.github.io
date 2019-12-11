@@ -129,7 +129,7 @@ A detailed description of a Stellar decomposition of data structures for represe
 
 Assume that the underlying CP complex is representedas an indexed complex, which encodes the spatial position of the vertices and the boundary relation R<sub>k,0</sub> of each top k-simplex in Σ.
 
-We use an array-based representation for the verticesand top cells of Σ. The Σ<sub>V</sub> array encodes the position of each vertex v in Σ, requiring a total of n·|Σ<sub>V</sub>| coordinates. 
+We use an array-based representation for the verticesand top cells of Σ. The Σ<sub>V</sub> array encodes the position of each vertex v in Σ, requiring a total of n \| Σ<sub>V</sub> \| coordinates. 
 
 Then consider the boundary relation, 
 
