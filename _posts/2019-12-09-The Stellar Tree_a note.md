@@ -1,6 +1,6 @@
 ---
 layout: post
-title: The Stellar Tree : A Note
+title: The Stellar Tree_A Note
 ---
 
 <center>
