@@ -6,7 +6,7 @@ excerpt_separator: <!--more-->
 
 # Setup
 title:               v1otusc.github.io
-tagline:             ''
+tagline:             'blue bones'
 description:         'OK! COMPUTER!'
 url:                 'https://v1otusc.github.io'
 baseurl:             'https://v1otusc.github.io'
@@ -19,4 +19,4 @@ author:
   email:             v1otusc@yeah.net
 
 # Custom vars
-version:             1.1.0
+version:             1.0.0
