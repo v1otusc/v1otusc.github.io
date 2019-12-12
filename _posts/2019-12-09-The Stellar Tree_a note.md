@@ -8,8 +8,6 @@ By_Zihan_Zhang@seu<br/>
 v1otusc@yeah.net
 </left>
 
-> This is a note 
-
 <!-- TOC -->
 
 - [Notions](#notions)
@@ -100,7 +98,7 @@ Formally, Φ<sub>TOP</sub> is a function from the regions of ∆ to the powerset
 below is an example of mapping function Φ<sub>TOP</sub>, for two regions (blue rectangles) of the decomposition of Figure 1(b) on a triangle mesh defined over its vertices. 
 
 <center>
-<img src = "https://raw.githubusercontent.com/v1otusc/PicBed/master/topcells_mapping_function.png" width = "90%">
+<img src = "https://raw.githubusercontent.com/v1otusc/PicBed/master/topcells_mapping_function.png" >
 </center>
 
 **Definition: spanning number**
@@ -150,7 +148,7 @@ Note that, in typical cases, where Σ is *pure* (i.e., its top CP cells all have
 **First** is a simple strategy that explicitly encodes the arrays of vertices and top CP cells **mapped** to each region and work our way to a compressed representation of these lists. Under Φ, each region r in ∆ maps to a list of vertices r<sub>V</sub> and a list of top CP cells r<sub>T</sub> from the complex Σ. A straightforward strategy would be to encode lists of vertices and top CP cells that explicitly list the mapped elements for each region r. We refer to this as the EXPLICIT Stellar decomposition encoding.
 
 <center>
-<img src = "https://raw.githubusercontent.com/v1otusc/PicBed/master/Explicit_stellar_decomposition.png">
+<img src = "https://raw.githubusercontent.com/v1otusc/PicBed/master/Explicit_stellar_decomposition.png" width = "70%">
 </center>
 
 The above encoding can be very expensive due to the redundant encoding of **top CP cells with vertices in multiple regions**.
@@ -158,7 +156,7 @@ The above encoding can be very expensive due to the redundant encoding of **top 
 **Second** is a COMPRESSED Stellar decomposition encoding that compacts the vertex and top CP cells lists in each region r by exploiting the *locality* of the elements within r. By replacing *runs* of incrementing consecutive sequences of indices using a generalization of *run-length encoding* **(RLE)[Held and Marshall, 1991]**. RLE is a form of data compression in which *runs* of consecutive identical values are encoded as pairs of integers representing the value and repetition count, rather than as multiple copies of the original value. 
 
 <center>
-<img src = "https://raw.githubusercontent.com/v1otusc/PicBed/master/runlength_and_sequentialrange.png">
+<img src = "https://raw.githubusercontent.com/v1otusc/PicBed/master/runlength_and_sequentialrange.png" width = "70%">
 </center>
 
 For example, in the figure.a above the four entries with value '2' are compacted into a pair of entries \[-2,4\], where a negative first number indicates the start of a run and its value, while the second number indicates the run’s length. 
@@ -182,7 +180,7 @@ The average reference number μ of a Stellar decomposition is the average number
 An EXPLICIT representation is equivalent to a COMPRESSED representation without any compressed runs, thus, it is always the case that μ ≤ χ (the average spanning number). 
 
 <center>
-<img src = "https://raw.githubusercontent.com/v1otusc/PicBed/master/compressed_encoding.png" width = "85%">
+<img src = "https://raw.githubusercontent.com/v1otusc/PicBed/master/compressed_encoding.png" width = "70%">
 </center>
 
 Figure above illustrates a COMPRESSED representation of the mesh from the **third Figure** after its vertex and triangle arrays have been reordered (in an external process) and highlights its sequential ranges, where r<sub>V</sub> requires a single run to encode the indexed vertices and r<sub>T</sub> requires four sequential runs to encode the indices of its triangles.
