@@ -15,11 +15,11 @@
       {% if node.title != null %}
 	      {% if node.layout == "page" %}
         <a class="sidebar-nav-item{% if page.url == node.url %} active{% endif %}" href="{{ node.url }}">{{ node.title }}</a>
-      	{% endif %}
+      	{% endif %} 
       {% endif %}
     {% endfor %}
 
-    <a class="sidebar-nav-item" href="https://github.com/v1otusc">GitHub project</a>
+    <a class="sidebar-nav-item" href="https://github.com/v1otusc">Projects</a>
   </nav>
 
   <div class="sidebar-item">
