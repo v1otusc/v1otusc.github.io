@@ -172,10 +172,10 @@ We then introducea a global characteristic that measures the average storage req
 The average reference number μ of a Stellar decomposition is the average number of references required to encode a top CP cell in the r<sub>T</sub> lists of the regions in ∆. Formally:
 
 <center>
-μ = ( ∑<sub>r ∈ ∆</sub>|rT| ) / |Σ<sub>T</sub>|
+μ = ( ∑<sub>r ∈ ∆</sub>|r<sub>T</sub>| ) / |Σ<sub>T</sub>|
 </center>
 
-**where |r<sub>T</sub>| is the size of the top CP cells list in a region r**.
+**where \|r<sub>T</sub>\| is the size of the top CP cells list in a region r**.
 
 An EXPLICIT representation is equivalent to a COMPRESSED representation without any compressed runs, thus, it is always the case that μ ≤ χ (the average spanning number). 
 
