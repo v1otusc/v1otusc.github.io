@@ -8,6 +8,8 @@ By_Zihan_Zhang@seu<br/>
 v1otusc@yeah.net
 </left>
 
+> This is a note 
+
 <!-- TOC -->
 
 - [Notions](#notions)
@@ -123,15 +125,15 @@ The average spanning number χ of a Stellar decomposition **S<sub>D</sub>** is t
 
 ## 1.2 Encoding
 
-A detailed description of a Stellar decomposition of data structures for representing a CP complex and a compressed encoding **for the regions of the decomposition**.
+A detailed description of a Stellar decomposition of data structures **for representing a CP complex** and a compressed encoding **for the regions of the decomposition**.
 
 ### 1.2.1 Indexed representation of the CP complex
 
 Assume that the underlying CP complex is representedas an indexed complex, which encodes the spatial position of the vertices and the boundary relation R<sub>k,0</sub> of each top k-simplex in Σ.
 
-We use an array-based representation for the verticesand top cells of Σ. The Σ<sub>V</sub> array encodes the position of each vertex v in Σ, requiring a total of n \| Σ<sub>V</sub> \| coordinates. 
+We use an array-based representation for the verticesand top cells of Σ. The Σ<sub>V</sub> array encodes the position of each vertex v in Σ, requiring a total of n·\| Σ<sub>V</sub> \| coordinates. 
 
-Then consider the boundary relation, 
+Then consider the boundary relation, The top CP cells are encoded using separate arrays Σ<sub>T<sub>k</sub></sub> for each dimension k ≤ d that has top CP cells in Σ. Σ<sub>T<sub>k</sub></sub> encodes the boundary connectivity from its top CP cells to their vertices, i.e., relation R<sub>k,0</sub> in terms of the indices of the vertices of its cells within Σ<sub>V</sub>. This requires \|R<sub>k,0</sub>(σ)\| references for a top k-cell σ. e.g. (k+1) vertex indices for a k-simplex and 2<sup>k</sup> references for a k-cube.
 
 **Thus**, the total storage cost of the indexed mesh representation is:
 
@@ -139,29 +141,75 @@ Then consider the boundary relation,
 n·|Σ<sub>V</sub>| + ∑<sub>k=1 -> d</sub>∑<sub>σ ∈ Σ<sub>T<sub>k</sub></sub></sub> |R<sub>k,0</sub>(σ)|
 </center>
 
-Note that, in typical cases, where Σ is pure (i.e., its top CP cells all have the same dimension d), Σ requires only two arrays: one for the vertices and one for the top cells.
+Note that, in typical cases, where Σ is *pure* (i.e., its top CP cells all have the same dimension d), Σ requires only two arrays: one for the vertices and one for the top cells.
 
 ### 1.2.2 A compressed region representation
 
 **Consider two encoding strategies** for the data mapped to each region of the decomposition.
 
-**First** is a simple strategy that explicitly encodes the arrays of vertices and top CP cells mapped to each region and work our way to a compressed representation of these lists. 
+**First** is a simple strategy that explicitly encodes the arrays of vertices and top CP cells **mapped** to each region and work our way to a compressed representation of these lists. Under Φ, each region r in ∆ maps to a list of vertices r<sub>V</sub> and a list of top CP cells r<sub>T</sub> from the complex Σ. A straightforward strategy would be to encode lists of vertices and top CP cells that explicitly list the mapped elements for each region r. We refer to this as the EXPLICIT Stellar decomposition encoding.
 
+<center>
+<img src = "https://raw.githubusercontent.com/v1otusc/PicBed/master/Explicit_stellar_decomposition.png">
+</center>
 
+The above encoding can be very expensive due to the redundant encoding of **top CP cells with vertices in multiple regions**.
+
+**Second** is a COMPRESSED Stellar decomposition encoding that compacts the vertex and top CP cells lists in each region r by exploiting the *locality* of the elements within r. By replacing *runs* of incrementing consecutive sequences of indices using a generalization of *run-length encoding* **(RLE)[Held and Marshall, 1991]**. RLE is a form of data compression in which *runs* of consecutive identical values are encoded as pairs of integers representing the value and repetition count, rather than as multiple copies of the original value. 
+
+<center>
+<img src = "https://raw.githubusercontent.com/v1otusc/PicBed/master/runlength_and_sequentialrange.png">
+</center>
+
+For example, in the figure.a above the four entries with value '2' are compacted into a pair of entries \[-2,4\], where a negative first number indicates the start of a run and its value, while the second number indicates the run’s length. 
+
+While we **do not** have such duplicated runs in our indexed representation, we often have *incrementing sequences* of indexes, such as {40,41,42,43,44}, within a local vertex list r<sub>V</sub> or top CP cells list r<sub>T</sub>. We therefore refer to a generalized RLE Scheme as **Sequential Range Encoding (SRE)** to compress such sequence : *the incrementing sequences*. SRE encodes a *run* of **consecutive non-negative indexes** using a pair of integers, representing the starting index, and the number of remaining elements in the range. As with RLE, we can intersperse runs (sequences) with non-runs in the same list by negating the starting index of a run. Thus, it is easy to determine whether or not we are in a run while we iterate through a sequential range encoded list. A feature of this scheme is that it allows us to dynamically append individual elements or runs to an SRE list with no storage overhead. Furthermore, we can easily expand a compacted range by replacing its entries with the first two values of the range **and appending the remaining values to the end of the list**. 
+
+> An ERROR in the figure.b above ?, the sequence {10, 11, 12} should be represented with the pair [-10, 2], use 2 to represent **the remain**, or we can replace 14 by 13.
+
+We then introducea a global characteristic that measures the average storage requirements for a top CP cell in a Stellar decomposition representation.
+
+**Definition: average reference number**
+
+The average reference number μ of a Stellar decomposition is the average number of references required to encode a top CP cell in the r<sub>T</sub> lists of the regions in ∆. Formally:
+
+<center>
+μ = ( ∑<sub>r ∈ ∆</sub>|rT| ) / |Σ<sub>T</sub>|
+</center>
+
+**where |r<sub>T</sub>| is the size of the top CP cells list in a region r**.
+
+An EXPLICIT representation is equivalent to a COMPRESSED representation without any compressed runs, thus, it is always the case that μ ≤ χ (the average spanning number). 
+
+<center>
+<img src = "https://raw.githubusercontent.com/v1otusc/PicBed/master/compressed_encoding.png" width = "85%">
+</center>
+
+Figure above illustrates a COMPRESSED representation of the mesh from the **third Figure** after its vertex and triangle arrays have been reordered (in an external process) and highlights its sequential ranges, where r<sub>V</sub> requires a single run to encode the indexed vertices and r<sub>T</sub> requires four sequential runs to encode the indices of its triangles.
 
 # The Stellar Tree
 
+The Stellar decomposition is a *general* model that is *agnostic* about how the decomposition is attained and about its relationship to the underlying CP complex. Thus, 
 
 ## 2.1 Definition
 
 
+
 ## 2.2 Encoding
+
+
 
 # Generating a Stellar tree
 
+
+
 ## 3.1 Reindexing and compressing the vertices
 
+
+
 ## 3.2 Reindexing and compressing the top CP cells
+
+
 
 # Implementation
 
