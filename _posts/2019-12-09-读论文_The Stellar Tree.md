@@ -1,6 +1,6 @@
 ---
 layout: post
-title: The Stellar Tree_A Note
+title: 读论文_The Stellar Tree
 ---
 
 <left>
