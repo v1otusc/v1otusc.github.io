@@ -1,13 +1,13 @@
 ---
 layout: page
-title: About Me
+title: About
 ---
 
 `SEU` 研一在读
 
 <hr>
 
-### contact
+# contact
 
 v1otusc@yeah.net or 416566894(qq)
 
