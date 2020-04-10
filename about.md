@@ -9,5 +9,5 @@ title: About
 
 # contact
 
-v1otusc@yeah.net or 416566894(qq)
+v1otusc@yeah.net
 
