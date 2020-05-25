@@ -3,7 +3,7 @@ layout: page
 title: About
 ---
 
-`SEU` 研一在读
+一个老实人
 
 <hr>
 
