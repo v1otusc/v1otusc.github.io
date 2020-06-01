@@ -33,12 +33,12 @@ The (m) and (n) in subscript are only represented the dimensionality of vectors,
 
 1-范数，列和范数
 $$
-\|\mathbf{A}\|_{1}=\max _{i} \sum_{j=1}^{n}\left|A_{i j}\right| = \max _{1 \leq j \leq n}\left\|\mathbf{a}_{j}\right\|_{1}
+\|\mathbf{A}\|_{1}=\max_{j} \sum_{i=1}^{m}\left|A_{i j}\right| = \max _{1 \leq j \leq n}\left\|\mathbf{a}_{j}\right\|_{1}
 $$
 
 ∞-范数，行和范数
 $$
-\|\mathbf{A}\|_{\infty}=\max _{j} \sum_{i=1}^{m}\left|A_{i j}\right| =  \max _{1 \leq i \leq m}\left\|\mathbf{a}_{(i)}\right\|_{1}
+\|\mathbf{A}\|_{\infty}=\max_{i} \sum_{j=1}^{n}\left|A_{i j}\right| =  \max _{1 \leq i \leq m}\left\|\mathbf{a}_{(i)}\right\|_{1}
 $$
 
 2-范数的形式为
