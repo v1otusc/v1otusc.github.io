@@ -11,7 +11,7 @@ An m × n matrix can be viewed as a vector in an mn-dimensional space: each of t
 
 ## 形式
 
-Given vector norms || · ||<sub>(m)</sub> , || · ||<sub>(n)</sub> and on the domain and the range of A ∈ R<sup>m×n</sup>, respectively, the induced matrix norm || A ||<sub>(m,n)</sub> is the smallest number C for which the following inequilty holds for any x ∈ R<sup>n</sup>.
+Given vector norms \|\| · \|\|<sub>(m)</sub> , \|\| · \|\|<sub>(n)</sub> and on the domain and the range of A ∈ R<sup>m×n</sup>, respectively, the induced matrix norm \|\| A \|\|<sub>(m,n)</sub> is the smallest number C for which the following inequilty holds for any x ∈ R<sup>n</sup>.
 
 $$
 \|\mathbf{A} \mathbf{x}\|_{(m)} \leq C\|\mathbf{x}\|_{(n)}
@@ -25,7 +25,7 @@ $$
 
 **注意**
 
-The (m) and (n) in subscript are only represented the dimensionality of vectors, rather than Lm or Ln norm.  The notations || · ||<sub>(m)</sub> and || · ||<sub>(n)</sub> can be any the same type of vector norm.
+The (m) and (n) in subscript are only represented the dimensionality of vectors, rather than Lm or Ln norm.  The notations \|\| · \|\|<sub>(m)</sub> and \|\| · \|\|<sub>(n)</sub> can be any the same type of vector norm.
 
 ## 证明
 
