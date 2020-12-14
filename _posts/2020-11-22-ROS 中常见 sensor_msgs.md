@@ -15,7 +15,7 @@ title: ROS 中常见 sensor_msgs
   - [5. sensor_msgs::ImuConstPtr](#5-sensor_msgsimuconstptr)
 - [vins 代码中的组合数据结构](#vins-代码中的组合数据结构)
   - [1. measurements](#1-measurements)
-  - [2. map<int, vector<pair<int, Eigen::Matrix<double, 7, 1>>>> image](#2-mapint-vectorpairint-eigenmatrixdouble-7-1-image)
+  - [2. ```map<int, vector<pair<int, Eigen::Matrix<double, 7, 1>>>> image```](#2-mapint-vectorpairint-eigenmatrixdouble-7-1-image)
   - [3. map<double, ImageFrame> all_image_frame](#3-mapdouble-imageframe-all_image_frame)
 
 <!-- /TOC -->
@@ -137,12 +137,12 @@ float64[9] linear_acceleration_covariance
 std::vector<std::pair<std::vector<sensor_msgs::ImuConstPtr>, sensor_msgs::PointCloudConstPtr>> measurements;
 ```
 
-estimator_node.cpp 中 getMeasurements() 函数将对 imu 和图像数据进行初步对齐得到的数据结构，确保图像关联着对应时间戳内的所有 IMU 数据
+estimator_node.cpp 中 getMeasurements() 函数将对 imu 和图像数据进行初步对齐得到的数据结构，确保图像关联着对应时间戳内的所有 IMU 数据。
 sensor_msgs::PointCloudConstPtr 表示某一帧图像的 feature_points，
 std::vector<sensor_msgs::ImuConstPtr> 表示当前帧和上一帧时间间隔中的所有IMU数据
-将两者组合成一个数据结构，并构建元素为这种结构的 vector 进行存储。
+将两者组合成一个数据结构，并构建元素为这种结构的 vector 容器进行存储。
 
-### 2. map<int, vector<pair<int, Eigen::Matrix<double, 7, 1>>>> image
+### 2. ```map<int, vector<pair<int, Eigen::Matrix<double, 7, 1>>>> image```
 
 在 estimator.cpp 中的 process() 中被建立，在 Estimator::processImage() 中被调用
 作用是建立每个特征点 (camera_id,[x,y,z,u,v,vx,vy]) 构成的 map，索引为 feature_id。
