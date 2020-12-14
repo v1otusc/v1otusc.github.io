@@ -69,7 +69,7 @@ std_msgs/Header header
 # feature_points->header.frame_id = "world";
 
 # 3D 点 (x,y,z)
-geometry_msgs/Point32[]
+geometry_msgs/Point32[] points
 
 # [特征点的 ID, 像素坐标 u,v, 速度 vx,vy]
 sensor_msgs/ChannelFloat32[] channels
