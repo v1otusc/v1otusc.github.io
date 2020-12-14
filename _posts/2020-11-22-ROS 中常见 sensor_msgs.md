@@ -15,7 +15,7 @@ title: ROS 中常见 sensor_msgs
   - [5. sensor_msgs::ImuConstPtr](#5-sensor_msgsimuconstptr)
 - [vins 代码中的组合数据结构](#vins-代码中的组合数据结构)
   - [1. measurements](#1-measurements)
-  - [2. map<int, vector<pair<int, Eigen::Matrix<double, 7, 1>>> image](#2-mapint-vectorpairint-eigenmatrixdouble-7-1-image)
+  - [2. map<int, vector<pair<int, Eigen::Matrix<double, 7, 1>>>> image](#2-mapint-vectorpairint-eigenmatrixdouble-7-1-image)
   - [3. map<double, ImageFrame> all_image_frame](#3-mapdouble-imageframe-all_image_frame)
 
 <!-- /TOC -->
@@ -37,7 +37,7 @@ string frame_id
 
 ### 2. sensor_msgs::ImageConsterPtr
 
-对应文件 sensor_msgs/Image.msg，是 vins(feature_trackers_node.cpp) 中回调函数img_callback() 输入，表示一幅图像。
+对应文件 sensor_msgs/Image.msg，是 vins(feature_trackers_node.cpp) 中回调函数 img_callback() 的输入，表示一幅图像。
 
 ```yaml
 # 头信息
@@ -114,19 +114,19 @@ sensor_msgs/ChannelFloat32[] channels
 
 ```yaml
 # 头信息
-Header header	
+Header header
 # 四元数[x,y,z,w]
 geometry_msgs/Quaternion orientation
 # 为什么是 [9] 而不是 [16] 对应的协方差矩阵，自由度为 3?
-float64[9] orientation_covariance	
+float64[9] orientation_covariance
 # 角速度[x,y,z]轴
-geometry_msgs/Vector3 angular_velocity	
+geometry_msgs/Vector3 angular_velocity
 # 对应协方差矩阵，Row major(行主序) about x, y, z axes
-float64[9] angular_velocity_covariance	
+float64[9] angular_velocity_covariance
 # 线性加速度[x,y,z]
-geometry_msgs/Vector3 linear_acceleration	
+geometry_msgs/Vector3 linear_acceleration
 # 对应协方差矩阵 Row major x, y z 
-float64[9] linear_acceleration_covariance	
+float64[9] linear_acceleration_covariance
 ```
 
 ## vins 代码中的组合数据结构
@@ -137,15 +137,15 @@ float64[9] linear_acceleration_covariance
 std::vector<std::pair<std::vector<sensor_msgs::ImuConstPtr>, sensor_msgs::PointCloudConstPtr>> measurements;
 ```
 
-estimator_node.cpp 中 getMeasurements() 函数将对 imu 和图像数据进行初步对齐得到的数据结构，确保图像关联着对应时间戳内的所有IMU数据
-sensor_msgs::PointCloudConstPtr 表示某一帧图像的feature_points，
+estimator_node.cpp 中 getMeasurements() 函数将对 imu 和图像数据进行初步对齐得到的数据结构，确保图像关联着对应时间戳内的所有 IMU 数据
+sensor_msgs::PointCloudConstPtr 表示某一帧图像的 feature_points，
 std::vector<sensor_msgs::ImuConstPtr> 表示当前帧和上一帧时间间隔中的所有IMU数据
 将两者组合成一个数据结构，并构建元素为这种结构的 vector 进行存储。
 
-### 2. map<int, vector<pair<int, Eigen::Matrix<double, 7, 1>>> image
+### 2. map<int, vector<pair<int, Eigen::Matrix<double, 7, 1>>>> image
 
 在 estimator.cpp 中的 process() 中被建立，在 Estimator::processImage() 中被调用
-作用是建立每个特征点 (camera_id,[x,y,z,u,v,vx,vy]) 构成的map，索引为 feature_id。
+作用是建立每个特征点 (camera_id,[x,y,z,u,v,vx,vy]) 构成的 map，索引为 feature_id。
 
 ```c++
 for (unsigned int i = 0; i < img_msg->points.size(); i++) {
@@ -171,7 +171,7 @@ for (unsigned int i = 0; i < img_msg->points.size(); i++) {
 
 在 estimator.h 中作为 class Estimator 的属性，key 是图像帧的时间戳，value 是图像帧类。
 
-图像帧类可由图像帧的特征点与时间戳构造，此外还保存了位姿Rt，预积分对象pre_integration，是否是关键帧。
+图像帧类可由图像帧的特征点与时间戳构造，此外还保存了位姿 R t，预积分对象 pre_integration，是否是关键帧。
 
 ```c++
 class ImageFrame
@@ -179,8 +179,8 @@ class ImageFrame
   public:
     ImageFrame(){};
     ImageFrame(const map<int, vector<pair<int, Eigen::Matrix<double, 7, 1>>>>& _points, double _t):t{_t},is_key_frame{false} {
-          points = _points;
-        };
+      points = _points;
+    };
     map<int, vector<pair<int, Eigen::Matrix<double, 7, 1>>>> points;
     double t;
     Matrix3d R;
