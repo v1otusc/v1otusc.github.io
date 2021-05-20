@@ -1,6 +1,6 @@
 ---
 layout: post
-title: matlab 中 使用 GTSAM 的简单方法
+title: matlab 中使用 GTSAM 的简单方法
 ---
 
 > 不需要自己编译
