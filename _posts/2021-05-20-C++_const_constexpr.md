@@ -7,7 +7,7 @@ title: const 与 constexpr
 
 编译期是编译器将你写的代码和资源文件链接编译成可执行文件的这一过程。运行期是运行前面编译期生成的可执行文件的过程。
 
-运行期常量(const 修饰)从一开始就存在，而编译期常量(constexpr修饰)在C++11标准之后才加入。const 修饰的运行期常量，会在运行编译完成后的代码时，先在内存的 **常量区** 开辟空间存放常量的值，以确保常量值不可变，保证程序的正确性。
+运行期常量(const 修饰)从一开始就存在，而编译期常量( constexpr 修饰)在 C++11 标准之后才加入。const 修饰的运行期常量，会在运行编译完成后的代码时，先在内存的 **常量区** 开辟空间存放常量的值，以确保常量值不可变，保证程序的正确性。
 
 而编译期常量是由编译器在编译时通过计算来确定常量的值，然后在代码中直接进行替换，类似于 #define MAX 5 在编译时将代码中所有的MAX替换成5一样，就不需要在后面的运行时再在内存上开辟空间存放常量，以达到优化的效果。
 
@@ -50,7 +50,7 @@ std::array<int, SIZE> arr;
 
 constexpr 函数则与编译期计算有关，要是 constexpr 函数所使用的变量其值能够在编译时就确定，那么 constexpr 函数就能在编译时执行计算。另一方面，要是 constexpr 函数所使用的变量其值只能在运行时确定，那么 constexpr 就和一般的函数没区别。
 
-C++11 要求constexpr函数不能多于一条语句，碰到 if-else 语句时，只能使用条件操作符来替代：
+C++11 要求 constexpr 函数不能多于一条语句，碰到 if-else 语句时，只能使用条件操作符来替代：
 
 ```c++
 constexpr unsigned long long fib( unsigned n ) {
@@ -82,7 +82,7 @@ constexpr unsigned long long fib( unsigned n )
 constexpr string str = "hello";
 ```
 
-但是，我们自己定义的类型却没有这个限制，因为 constructor 和成员函数可以是constexpr函数：
+但是，我们自己定义的类型却没有这个限制，因为构造函数和成员函数可以是 constexpr 函数：
 
 ```c++
 class Point {
