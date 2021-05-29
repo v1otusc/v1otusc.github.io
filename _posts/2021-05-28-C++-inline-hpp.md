@@ -3,6 +3,8 @@ layout: post
 title: C++ header-only
 ---
 
+> [原文地址](https://zhuanlan.zhihu.com/p/102481649)
+
 <!-- TOC -->
 
 - [1. C++ 中提供某个库，往往有三种方法](#1-c-中提供某个库往往有三种方法)
