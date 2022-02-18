@@ -1,6 +1,6 @@
 ---
 layout: post
-title: ROS wstool 的使用
+title: ROS wstool 记录
 ---
 
 > 转载 https://blog.csdn.net/weixin_38258767/article/details/104260992
