@@ -38,7 +38,7 @@ rosrun image_view extract_images _sec_per_frame:=0.5 _image_transport:=compresse
 
 即可，其中 _sec_per_frame:=0.5 表示时间间隔，_image_transport:=compressed 表示提取压缩图像
 
-但是，我猜 image_transport 会对 topic 名称做判断(不仅是通过 8f7a12909da2c9d3332d540a0977563f 这样的 hash 值)，所以 extract_iamges 这一步不变，但是 rosbag 的时候，需要 rename 一下，进行一步 hack: 
+但是，我猜 image_transport 会对 topic 名称做判断(不仅是通过 8f7a12909da2c9d3332d540a0977563f 这样的 hash 值)，所以 extract_images 这一步不变，但是 rosbag 的时候，需要 rename 一下，进行一步 hack: 
 
 ```
 rosbag play BLoop_fast_disturbed_stereo.bag /camera/main_seg:=/camera/main_seg/compressed
